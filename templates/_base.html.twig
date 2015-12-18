@@ -7,7 +7,7 @@
         @import "/css/style.css";
     </style>
 </head>
-<body onload="startTimer()">
+<body onload="changeImageTimer()">
 
 <header>
     <a href="index.php"><img src="images/website_logo_text.png" alt="logo"></a>
@@ -18,10 +18,10 @@
             <a href="/" class="{% block indexNavStyle %}{% endblock %}">Home page</a>
         </li>
         <li>
-            <a href="/about" class="{% block aboutNavStyle %}{% endblock %}">About page</a>
+            <a href="/menu" class="{% block menuNavStyle %}{% endblock %}">Menu Categories</a>
         </li>
         <li>
-            <a href="/menu" class="{% block menuNavStyle %}{% endblock %}">Menu Categories</a>
+            <a href="/about" class="{% block aboutNavStyle %}{% endblock %}">About page</a>
         </li>
         <li>
             <a href="/contact" class="{% block contactNavStyle %}{% endblock %}">Contact page</a>
