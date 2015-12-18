@@ -38,7 +38,7 @@ class MenuCategoryRepository
 
         $mc3 = new MenuCategory(3);
         $mc3->setMenuCategoryTitle('Drinks');
-        $mc3->setMenuCategoryImage('drink.jpg');
+        $mc3->setMenuCategoryImage('black_tea.png');
         $this->addMenuCategory($mc3);
 
         $mc4 = new MenuCategory(4);

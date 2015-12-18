@@ -35,8 +35,8 @@
       <file leaf-file-name="MenuCategoryRepository.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/MenuCategoryRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16815476">
-              <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.42113096">
+              <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -654,11 +654,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/vegetarian_burger.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.230769">
@@ -777,8 +772,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/MenuCategoryRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16815476">
-          <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.42113096">
+          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
           <folding />
         </state>
       </provider>
