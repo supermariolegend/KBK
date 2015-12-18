@@ -11,3 +11,6 @@ chocolate_cheesecake.jpg - https://s2.graphiq.com/sites/default/files/5806/media
 strawberry_cheesecake.jpg - https://s2.graphiq.com/sites/default/files/530/media/images/t2/Carls_Jr_Strawberry_Swirl_Cheesecake_762589_i0.jpg
 queen_salad.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Dairy_Queen_Salad_7199147.png
 garden_salad.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Wendys_Garden_Salad_7182870.png
+donuts.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USDA_Doughnut_4347051.jpg
+veggie_delight_salad.jpg - https://s.graphiq.com/sites/default/files/5806/media/images/t2/Subway_Veggie_Delight_Salad_7022366.jpg
+jimmy_john_sandwich.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Jimmy_Johns_Vegetarian_Submarine_Sandwich_With_French_4352476.jpg
