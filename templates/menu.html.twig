@@ -19,11 +19,12 @@
             <a href="/menu/CategoryCode{{ category.menuCategoryCode }}">{{ category.menuCategoryTitle }}</a>
         </th>
         <td>
-            <img id="{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="picture of {{ category.menuCategoryTitle }}" width="370" height="273">
+            <img id="{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="picture of {{ category.menuCategoryTitle }}" width="300" height="221">
         </td>
     </tr>
 {% endfor %}
 </table>
 <script type="text/javascript" src="/js/menuCategory.js"></script>
-<br><br>
+<br>
+<br>
 {% endblock %}
