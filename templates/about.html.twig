@@ -1,0 +1,21 @@
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block aboutNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    {{ content }}
+    <p>
+        <em>This is an awesome looking about page!!!</em>
+    </p>
+    <hr>
+    <p>
+        <strong>We love good food</strong>
+    </p>
+{% endblock %}

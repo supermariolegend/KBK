@@ -1,0 +1,29 @@
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}Menu Categories{% endblock %}
+
+{# ----------------------------------------#}
+{% block menuNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+<h1>OUR MENU</h1>
+
+<table>
+{% set page_count = 0 %}
+
+{% for category in categories %}
+    <tr>
+        <th>
+            <a href="/menu/CategoryCode{{ category.menuCategoryCode }}">{{ category.menuCategoryTitle }}</a>
+        </th>
+        <td>
+            <img id="{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="picture of {{ category.menuCategoryTitle }}" width="370" height="273">
+        </td>
+    </tr>
+{% endfor %}
+</table>
+<script type="text/javascript" src="/js/menuCategory.js"></script>
+<br><br>
+{% endblock %}

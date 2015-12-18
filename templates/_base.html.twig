@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>KBK - {% block title %}{% endblock %}</title>
+    <style>
+        @import "/css/style.css";
+    </style>
+</head>
+<body onload="startTimer()">
+
+<header>
+    <a href="index.php"><img src="images/website_logo_text.png" alt="logo"></a>
+</header>
+<nav>
+    <ul>
+        <li>
+            <a href="/" class="{% block indexNavStyle %}{% endblock %}">Home page</a>
+        </li>
+        <li>
+            <a href="/about" class="{% block aboutNavStyle %}{% endblock %}">About page</a>
+        </li>
+        <li>
+            <a href="/menu" class="{% block menuNavStyle %}{% endblock %}">Menu Categories</a>
+        </li>
+        <li>
+            <a href="/contact" class="{% block contactNavStyle %}{% endblock %}">Contact page</a>
+        </li>
+    </ul>
+</nav>
+
+<hr/>
+
+{% block main %}
+{% endblock %}
+
+<footer>
+    2015 &copy; KBK Food Company Ltd.
+</footer>
+</body>
+</html>

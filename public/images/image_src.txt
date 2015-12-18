@@ -1,0 +1,13 @@
+vegetarian_burger.jpg - https://s2.graphiq.com/sites/default/files/530/media/images/t2/Burger_King_BK_Veggie_Burger_755054_i0.jpg
+dessert.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USDA_Pumpkin_Pie_4344874.jpg
+salad.jpg - https://s2.graphiq.com/sites/default/files/530/media/images/t2/McDonalds_Side_Salad_823450.png
+drink.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USDA_Fruit_Flavored_Flavored_Water_4349299.jpg
+backyard_burger.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Back_Yard_Burgers_Garden_Veggie_Hamburger_4357060.png
+red_robin_burger.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Red_Robin_Veggie_Rad_4351882.jpg
+orange_juice.jpg - https://s.graphiq.com/sites/default/files/5806/media/images/t2/Orange_Juice_7021661.jpg
+tomato_juice.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USDA_Tomato___Juice_4346012.jpg
+lemon_tea.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USDA_Lemon_Flavor___Tea_4345657.png
+chocolate_cheesecake.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Jenny_Craig_Triple_Chocolate_Cheesecake_4356955.jpg
+strawberry_cheesecake.jpg - https://s2.graphiq.com/sites/default/files/530/media/images/t2/Carls_Jr_Strawberry_Swirl_Cheesecake_762589_i0.jpg
+queen_salad - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Dairy_Queen_Salad_7199147.png
+garden_salad - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Wendys_Garden_Salad_7182870.png

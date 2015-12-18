@@ -1,0 +1,113 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Marian
+ * Date: 17/12/2015
+ * Time: 22:55
+ */
+
+namespace KBK\Model;
+
+/**
+ * Class Menu to represent menu objects
+ * @package KBK\Model
+ */
+class MenuCategory
+{
+    /**
+     * menu code of each menu (uniques primary key)
+     * example:
+     * <code>
+     * 12987
+     * </code>
+     * @var int
+     */
+    private $menuCategoryCode;
+
+    /**
+     * title of product category
+     * example:
+     * <code>
+     * drinks
+     * </code>
+     * @var string
+     */
+    private $menuCategoryTitle;
+
+    /**
+     * path to menu category image
+     * example
+     * <code>
+     * drink_water_still.jpg
+     * </code>
+     * @var string
+     */
+    private $menuCategoryImage;
+
+    /**
+     * create new menu category product by providing the menu category code
+     * example:
+     * <code>
+     * $menuCategory = new MenuCategory(12987);
+     * </code>
+     * @param string $menuCategoryCode
+     */
+    function __construct($menuCategoryCode)
+    {
+        $this->menuCategoryCode = $menuCategoryCode;
+    }
+
+    /**
+     * get the menu category code
+     * example:
+     * <code>
+     * $menuCategoryCode = $m->getMenuCategoryCode();
+     * </code>
+     * @return string
+     */
+    public function getMenuCategoryCode()
+    {
+        return $this->menuCategoryCode;
+    }
+
+    /**
+     * set menu category title
+     * example:
+     * <code>
+     * drinks
+     * </code>
+     * @param string $menuCategoryTitle
+     */
+    public function setMenuCategoryTitle($menuCategoryTitle)
+    {
+        $this->menuCategoryTitle = $menuCategoryTitle;
+    }
+
+    /**
+     * returns menu category title
+     * @return string
+     */
+    public function getMenuCategoryTitle()
+    {
+        return $this->menuCategoryTitle;
+    }
+
+    /**
+     * set the image path for a category menu product
+     * @param string $menuCategoryImage
+     */
+    public function setMenuCategoryImage($menuCategoryImage)
+    {
+        $this->menuCategoryImage = $menuCategoryImage;
+    }
+
+    /**
+     * get the path to the image for the menu category product
+     * @return string
+     */
+    public function getMenuCategoryImage()
+    {
+        return $this->menuCategoryImage;
+    }
+
+}

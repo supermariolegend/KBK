@@ -1,0 +1,22 @@
+{
+  "burger": {
+    "1": "/images/backyard_burger.jpg",
+    "2": "/images/red_robin_burger.jpg",
+    "3": "/images/vegetarian_burger.png"
+  },
+  "salad": {
+    "1": "/images/salad.jpg",
+    "2": "/images/garden_salad.jpg",
+    "3": "/images/queen_salad.png"
+  },
+  "drink": {
+    "1": "/images/drink.jpg",
+    "2": "/images/orange_juice.png",
+    "3": "/images/tomato_juice.png"
+  },
+  "dessert": {
+    "1": "/images/dessert.jpg",
+    "2": "/images/chocolate_cheesecake.jpg",
+    "3": "/images/strawberry_cheesecake.png"
+  }
+}

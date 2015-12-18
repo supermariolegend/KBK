@@ -1,0 +1,22 @@
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block contactNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    {{ content }}
+    <p>
+        <form id="contact">
+            <p>
+            Your name:
+            <textarea>bla, bla</textarea>
+            </p>
+        </form>
+    </p>
+{% endblock %}
