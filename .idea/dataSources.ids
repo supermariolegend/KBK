@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - KBK@localhost" uuid="4234b433-4cac-4595-8ce4-bdcf1d8634b2">
+    <database-info product="MySQL" version="5.5.5-10.0.20-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="kbk"/>
+    <table name="categories" schema="" catalog="kbk" type="TABLE">
+      <column name="CategoryID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CategoryName" sqlType="VARCHAR" precision="24" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="CategoryID"/>
+      <exported-key name="products_ibfk_1" table="products" schema="" catalog="kbk" columns="CategoryID"/>
+    </table>
+    <table name="products" schema="" catalog="kbk" type="TABLE">
+      <column name="ProductID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CategoryID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="bGlua2VkIHRvIENhdGVnb3J5SUQgaW4gY2F0ZWdvcmllcyB0YWJsZQ=="/>
+      <column name="ProductName" sqlType="VARCHAR" precision="222" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ProductImageURL" sqlType="VARCHAR" precision="222" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ProductDescription" sqlType="VARCHAR" precision="280" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ProductCalories" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ProductAllergyInfo" sqlType="VARCHAR" precision="222" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ProductPrice" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <primary-key name="PRIMARY" columns="ProductID"/>
+      <foreign-key name="products_ibfk_1" columns="CategoryID" ref-table="categories" ref-schema="" ref-catalog="kbk" ref-columns="CategoryID" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="users" schema="" catalog="kbk" type="TABLE">
+      <column name="userID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="userID"/>
+      <index name="username" unique="true" columns="username"/>
+    </table>
+  </data-source>
+</component>
