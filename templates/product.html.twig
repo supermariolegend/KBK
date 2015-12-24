@@ -1,0 +1,22 @@
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block menuNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <h1>{{ productName }}</h1>
+    <p>{{ errorMessage }}</p>
+    <img src="/images/{{ productImageURL }}" alt="Picture of {{ productName }}" width="300" height="221" />
+    <div class="product_text">
+        <p>Description: {{ productDescription }}</p>
+        <p>Calories: {{ productCalories }}</p>
+        <p>Allergy Information: {{ productAllergyInfo }}</p>
+        <p>Price: &euro;{{ productPrice }}</p>
+    </div>
+{% endblock %}
