@@ -5,16 +5,35 @@ html {
 header {
     text-align: center;
 }
+
+/* *********** login section ******* */
+header section {
+    flex: 1;
+}
+
+header section {
+    text-align: right;
+    color: #dd1144;
+}
+
+/* **** error login **** */
+
+p.error_login {
+    padding: 1rem;
+    background-color: palegreen;
+}
+
+/* ******** body styling ****** */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: lavender;
 }
 
-h1  {
+h1 {
     color: lightsalmon;
     font-family: sans-serif;
-    text-align: center;
 }
+
 /* **** Nav ********************* */
 
 nav ul {
@@ -62,21 +81,71 @@ footer {
     background-color: lawngreen;
 }
 
-/* ******* nav secure ********** */
+/* ********** table links ******** */
 
-nav#secure a.current_page {
-    background-color: aquamarine;
-    color: white;
+th a {
+    text-decoration: none;
+    color: darkgreen;
 }
 
-nav#secure a:hover {
-    background-color: aquamarine;
+th a:hover {
+    color: salmon;
 }
 
-
-/* ******** login ************* */
-
-#login {
-    text-align: right;
+/* ********** layout - rules for multi-column display **** */
+.column_container {
+    display: flex;
+    border: 0.2rem solid lightseagreen;
+}
+.column_container aside	{
     padding: 1rem;
+}
+.column_container section {
+    padding: 1rem;
+    border: 0.1rem solid lightseagreen;
+}
+aside	{
+    width: 10rem;
+    background-color: lightsalmon;
+}
+    /* ******** the main section will take the remaining available space **** */
+
+.column_container section {
+    flex: 1;
+    padding-bottom: 4rem;
+}
+
+/* *************** search results page ***************** */
+
+span.search {
+    text-decoration: none;
+    color: salmon;
+}
+
+span.search:hover {
+    color: lawngreen;
+    background-color: lightsalmon;
+    cursor: pointer;
+}
+
+.search_box {
+    position: absolute;
+    right: 2rem;
+}
+
+.product_text {
+    position: relative;
+    top: -221px;
+    left: 300px;
+    margin-right: 310px;
+}
+
+.product {
+    text-decoration: none;
+    color: darkgreen;
+}
+
+.product:hover {
+    color: salmon;
+    cursor:pointer;
 }
