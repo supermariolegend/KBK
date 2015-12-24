@@ -1,0 +1,33 @@
+{# ****** templates login page ******* #}
+
+{% extends '_base.html.twig' %}
+
+{% block title %} login {% endblock %}
+
+{% block main %}
+
+    {% if errorMessage %}
+        <p class="error_login">
+            {{ errorMessage }}
+        </p>
+
+        <hr>
+    {% endif %}
+
+    <h2>Please enter login details</h2>
+    <form
+            method="post"
+            action="/login"
+            >
+        <p>
+            username:
+            <input type="text" name="username" autofocus>
+        </p>
+        <p>
+            password:
+            <input type="password" name="password">
+        </p>
+        <input type="submit" value="login">
+    </form>
+
+{% endblock %}
