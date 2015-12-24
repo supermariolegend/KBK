@@ -8,23 +8,35 @@
 
 {# ----------------------------------------#}
 {% block main %}
+    <div class="search_box">
+        <p>Search</p>
+        <form name="searchForm" method="get" action="/search">
+            <input type="text" name="search" size=14" maxlength="20" placeholder="Search our Website"/>
+            <input type="submit" name="submit" value="Search" />
+        </form>
+    </div>
 <h1>OUR MENU</h1>
-
 <table>
 {% set page_count = 0 %}
-
-{% for category in categories %}
+    {% for category in categories %}
     <tr>
-        <th>
-            <a href="/menu/CategoryCode{{ category.menuCategoryCode }}">{{ category.menuCategoryTitle }}</a>
-        </th>
-        <td>
-            <img id="{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="picture of {{ category.menuCategoryTitle }}" width="300" height="221">
-        </td>
+        <form action="/categories" id="form{{ category.menuCategoryCode }}" method="get">
+            <th>
+                <span class="product" onclick="document.getElementById('form{{ category.menuCategoryCode }}').submit();">
+                    {{ category.menuCategoryTitle }}
+                </span>
+            </th>
+            <td>
+                <img id="image{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="picture of {{ category.menuCategoryTitle }}" width="300" height="221">
+            </td>
+            <input type="hidden" name="categoryNumber" value="{{ category.menuCategoryCode }}" />
+            <input type="hidden" name="categoryName" value="{{ category.menuCategoryTitle }}" />
+        </form>
     </tr>
 {% endfor %}
 </table>
-<script type="text/javascript" src="/js/menuCategory.js"></script>
+<script src="/js/randomImage.js">
+</script>
 <br>
 <br>
 {% endblock %}
