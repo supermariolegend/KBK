@@ -10,6 +10,7 @@
         }
     },
     "scripts":{
+        "phpunit": "php phpunit.phar --log-tap tests/log/phpunit.log",
         "phpdoc": "php phpDocumentor.phar -d ./src -t ./src/documentation"
     }
 }
