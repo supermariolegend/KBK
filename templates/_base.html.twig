@@ -6,12 +6,25 @@
     <style>
         @import "/css/style.css";
     </style>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 </head>
 <body onload="changeImageTimer()">
 
 <header>
-    <a href="index.php"><img src="images/website_logo_text.png" alt="logo"></a>
+    <a href="/"><img src="/images/website_logo_text.png" alt="logo"></a>
+
+    <!-- ******login/logout section******** -->
+    <section class="login_section">
+        {% if username %}
+            you are logged in as: {{ username }}
+            <br>
+            <a href="/logout">logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+        {% endif %}
+    </section>
 </header>
+<!-- **********NAV bar************* -->
 <nav>
     <ul>
         <li>
@@ -26,14 +39,32 @@
         <li>
             <a href="/contact" class="{% block contactNavStyle %}{% endblock %}">Contact page</a>
         </li>
+
+        {# ************** secure links only showing if logged in successfully ******* #}
+        {% if username %}
+        <li>
+            <a href="/adminCodes" class="{% block adminIndexNavStyle %}{% endblock %}">Admin</a>
+        </li>
+        {% endif %}
+
     </ul>
 </nav>
 
 <hr/>
 
-{% block main %}
-{% endblock %}
+<!-- ************* DIV column container *************** -->
+<div class="column_container">
 
+<!-- **************** left hand side column *********** -->
+    <aside>
+
+    </aside>
+<!-- ************** main section of the page ********** -->
+    <section>
+        {% block main %}
+        {% endblock %}
+    </section>
+</div>
 <footer>
     2015 &copy; KBK Food Company Ltd.
 </footer>
