@@ -1,3 +1,4 @@
+website_logo_text.png - my own design
 vegetarian_burger.jpg - https://s2.graphiq.com/sites/default/files/530/media/images/t2/Burger_King_BK_Veggie_Burger_755054_i0.jpg
 dessert.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USDA_Pumpkin_Pie_4344874.jpg
 salad.jpg - https://s2.graphiq.com/sites/default/files/530/media/images/t2/McDonalds_Side_Salad_823450.png
@@ -14,3 +15,4 @@ garden_salad.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/
 donuts.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USDA_Doughnut_4347051.jpg
 veggie_delight_salad.jpg - https://s.graphiq.com/sites/default/files/5806/media/images/t2/Subway_Veggie_Delight_Salad_7022366.jpg
 jimmy_john_sandwich.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Jimmy_Johns_Vegetarian_Submarine_Sandwich_With_French_4352476.jpg
+cappuccino.jpg - http://www.kenwoodworld.com/Global/recipes/Recipe%20Images/desserts/Cappuccino_Cups_1.jpg
