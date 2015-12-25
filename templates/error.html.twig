@@ -1,0 +1,12 @@
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+<h3>We are sorry, but something went wrong</h3>
+{{ errorMessage|raw }}
+{% endblock %}
