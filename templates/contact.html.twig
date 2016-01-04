@@ -1,3 +1,4 @@
+{# *********** templates/contact.html.twig ********** #}
 {% extends '_base.html.twig' %}
 
 {# ----------------------------------------#}
@@ -10,13 +11,41 @@
 
 {# ----------------------------------------#}
 {% block main %}
-    {{ content }}
+    <h1>Contact Us</h1>
+    <p>If you want to make any inquires or suggestions about our products or service, please fill out the form below and we will get back in touch with you as soon as possible.</p>
+    <form method="get" action="/contactSent">
+        <p>
+            Name
+            <input type="text" name="name" placeholder="Enter Name">
+        </p>
+        <p>
+            Phone number:
+            <input type="number" name="phone" placeholder="Your phone number">
+        </p>
+        <p>
+            Email address
+            <input type="email" name="email" placeholder="Enter your email">
+        </p>
+        <p>
+            Message
+        </p>
+        <textarea name="message" rows="5" cols="60" placeholder="Please enter your message here"></textarea>
+        <br>
+        <input type="submit" value="Send">
+    </form>
+    <h3>Our contact details are:</h3>
+    <h4>Address:</h4>
     <p>
-        <form id="contact">
-            <p>
-            Your name:
-            <textarea>bla, bla</textarea>
-            </p>
-        </form>
+        331 South East Boulevard
     </p>
+    <p>
+        Dublin South
+    </p>
+    <p>
+        HV54 7GT
+    </p>
+    <h4>Phone:</h4>
+    <p>&#9743; +353-1-123456789</p>
+    <h4>Email:</h4>
+    <a href="mailto:admin@kbk1234987.com">&#9993; Email KBK</a>
 {% endblock %}

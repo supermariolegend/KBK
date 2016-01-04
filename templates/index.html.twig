@@ -1,3 +1,4 @@
+{# *********** templates/index.html.twig ********** #}
 {% extends '_base.html.twig' %}
 
 {# ----------------------------------------#}
@@ -8,7 +9,39 @@
 {# ----------------------------------------#}
 {% block indexNavStyle %}current_page{% endblock %}
 
+{# --------------------------------------- #}
+{% block bodyScripts %}changeImageTimer();{% endblock %}
 {# ----------------------------------------#}
 {% block main %}
-    Hello, I am the home page of this site
+    <h1>Welcome to your preferred vegetarian take away restaurant</h1>
+    <h3>Here you will be spoiled with the abundance and diversity of our quality vegetarian food</h3>
+    <img src="/images/backyard_burger.png" class="homepageImage" id="image1" alt="picture of a vegeburger">
+    <img src="/images/salad.png" class="homepageImage" id="image2" alt="picture of salad">
+    <img src="/images/cappuccino.png" class="homepageImage" id="image3" alt="picture of cappuccino">
+    <p>
+        We take pride in offering you the mouth watering vegetarian burgers such as "Backyard burger", "Red Robin Vegetarian Burger", "Jimmy John Sandwich" and more.
+    </p>
+    <p>
+        In our restaurant you can also find a large selection of healthy <strong>fresh made salads.</strong>
+    </p>
+    <p>
+        Indulge yourself with our red Lavazza &reg; KBK Cappuccino or our classic black tea known as Earl Grey which is flavoured with bergamot essential oil or citrus flavour.
+    </p>
+    <p>
+        Your experience with KBK will not be completed before trying the KBK donuts, strawberry cheesecake or the much sought-after pumpkin pie!
+    </p>
+    <p>
+        Start your amazing journey <a href="/menu">now!</a>
+    </p>
+    <p>When you are ready, <strong>call 01-123456789</strong> to place your order and we will deliver within 30 minutes if you live within 10 miles radius and best of all - delivery is FREE!!</p>
+    <hr>
+    <br>
+    <br>
+    <p>
+        <em>For 2016, KBK has launched its own franchise business.</em> We offer full support in setting up your own KBK establishment offering you the recipe for success!
+    </p>
+    <p>
+        If you are interested in this exciting offer, please visit <a href="/contact">our contact page</a> and leave your details then we will contact you and arrange a meeting or offer you an informational introductory franchise business pack!
+    </p>
+    <script src="/js/homepageRandomImage.js"></script>
 {% endblock %}

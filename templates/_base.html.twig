@@ -1,20 +1,22 @@
+{# *********** templates/_base.html.twig ********** #}
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>KBK - {% block title %}{% endblock %}</title>
     <style>
         @import "/css/style.css";
     </style>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 </head>
-<body onload="changeImageTimer()">
+<body onload="{% block bodyScripts %}{% endblock %}resizeLogo();" onresize="resizeLogo()">
 
 <header>
-    <a href="/"><img src="/images/website_logo_text.png" alt="logo"></a>
+    <a href="/"><img class="website_logo" id="website_logo" src="/images/website_logo_text.png" alt="logo"></a>
 
     <!-- ******login/logout section******** -->
-    <section class="login_section">
+    <section>
         {% if username %}
             you are logged in as: {{ username }}
             <br>
@@ -28,23 +30,29 @@
 <nav>
     <ul>
         <li>
-            <a href="/" class="{% block indexNavStyle %}{% endblock %}">Home page</a>
+            <a href="/" class="{% block indexNavStyle %}{% endblock %}">Guide Me Home</a>
         </li>
         <li>
-            <a href="/menu" class="{% block menuNavStyle %}{% endblock %}">Menu Categories</a>
+            <a href="/menu" class="{% block menuNavStyle %}{% endblock %}">Our Menu</a>
         </li>
         <li>
-            <a href="/about" class="{% block aboutNavStyle %}{% endblock %}">About page</a>
+            <a href="/about" class="{% block aboutNavStyle %}{% endblock %}">More About Us</a>
         </li>
         <li>
-            <a href="/contact" class="{% block contactNavStyle %}{% endblock %}">Contact page</a>
+            <a href="/contact" class="{% block contactNavStyle %}{% endblock %}">Contact Us</a>
         </li>
 
         {# ************** secure links only showing if logged in successfully ******* #}
         {% if username %}
-        <li>
-            <a href="/adminCodes" class="{% block adminIndexNavStyle %}{% endblock %}">Admin</a>
-        </li>
+            <li>
+                <a href="/adminChangeCategory" class="{% block adminCategoryNavStyle %}{% endblock %}">Change Categories</a>
+            </li>
+            <li>
+                <a href="/adminChangeProductSelectCategory" class="{% block adminProductNavStyle %}{% endblock %}">Change Products</a>
+            </li>
+            <li>
+                <a href="/adminSearch?keywords=&search_type=new" class="{% block adminSearchNavStyle %}{% endblock %}">Search Products</a>
+            </li>
         {% endif %}
 
     </ul>
@@ -57,7 +65,26 @@
 
 <!-- **************** left hand side column *********** -->
     <aside>
-
+        <h3>
+            We believe in good food
+        </h3>
+        <p>
+            At KBK we encourage the use of fine ingredients and organic, non GMO products.
+        </p>
+        <p>
+            <img src="/images/organic.jpg" alt="picture of organic farming">
+        </p>
+        <p>
+            By eating vegetarian food you make a big commitment to a better world!
+        </p>
+        <p>
+            <img src="/images/organic_farming_logo.jpg" alt="picture of EU organic logo">
+        </p>
+        <p>
+            We invest in our staff ongoing training and are proud of being able to retain our chefs for the last 10 years!
+            This helped us build our good reputation and will continue to do so...
+        </p>
+        <img src="/images/chefs.jpg" alt="picture of chefs">
     </aside>
 <!-- ************** main section of the page ********** -->
     <section>
@@ -65,8 +92,9 @@
         {% endblock %}
     </section>
 </div>
+<script src="/js/resizeLogo.js"></script>
 <footer>
-    2015 &copy; KBK Food Company Ltd.
+    2016 &copy; KBK Food Company Ltd.
 </footer>
 </body>
 </html>

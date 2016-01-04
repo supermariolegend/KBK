@@ -1,3 +1,4 @@
+{# *********** templates/search.html.twig ********** #}
 {% extends '_base.html.twig' %}
 
 {# ----------------------------------------#}
@@ -13,11 +14,21 @@
     <div class="search_box">
         <p>Search</p>
         <form name="searchForm" method="get" action="/search">
-            <input type="text" name="search" size="25" maxlength="30" placeholder="Search KBK products" value="{{ searchQuery }}" />
-            <input type="submit" name="submit" value="Search" />
+            <input type="text" name="search" size="25" maxlength="30" placeholder="Search KBK products" value="{{ search }}">
+            <input type="submit" name="submit" value="Search">
+            <p>By name:
+                <input type="submit" name="name" value="ascending">
+                <input type="submit" name="name" value="descending">
+            </p>
+            <p>By calories:
+                <input type="submit" name="calories" value="ascending">
+                <input type="submit" name="calories" value="descending">
+            </p>
         </form>
     </div>
-    <h1>Search results for "{{ searchQuery }}"</h1>
+    <h1>{{ searchTitle }}</h1>
     <br>
+    <div class="search_results">
        {{ results|raw }}
+    </div>
 {% endblock %}

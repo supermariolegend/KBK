@@ -1,5 +1,4 @@
-{# ****** templates login page ******* #}
-
+{# *********** templates/login.html.twig ********** #}
 {% extends '_base.html.twig' %}
 
 {% block title %} login {% endblock %}
@@ -15,10 +14,7 @@
     {% endif %}
 
     <h2>Please enter login details</h2>
-    <form
-            method="post"
-            action="/login"
-            >
+    <form method="post" action="/login">
         <p>
             username:
             <input type="text" name="username" autofocus>
@@ -27,7 +23,7 @@
             password:
             <input type="password" name="password">
         </p>
-        <input type="submit" value="login">
+        <input type="submit" value="Login">
     </form>
 
 {% endblock %}

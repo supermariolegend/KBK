@@ -1,3 +1,4 @@
+{# *********** templates/menu.html.twig ********** #}
 {% extends '_base.html.twig' %}
 
 {# ----------------------------------------#}
@@ -7,36 +8,48 @@
 {% block menuNavStyle %}current_page{% endblock %}
 
 {# ----------------------------------------#}
+{% block bodyScripts %}changeImageTimer();{% endblock %}
 {% block main %}
-    <div class="search_box">
-        <p>Search</p>
-        <form name="searchForm" method="get" action="/search">
-            <input type="text" name="search" size="25" maxlength="30" placeholder="Search KBK products"/>
-            <input type="submit" name="submit" value="Search" />
-        </form>
-    </div>
+<div class="search_box">
+    <p>Search</p>
+    <form name="searchForm" method="get" action="/search">
+        <input type="text" name="search" size="25" placeholder="Search KBK products">
+        <input type="submit" name="submit" value="Search">
+        <p>By name:
+            <input type="submit" name="name" value="ascending">
+            <input type="submit" name="name" value="descending">
+        </p>
+        <p>By calories:
+            <input type="submit" name="calories" value="ascending">
+            <input type="submit" name="calories" value="descending">
+        </p>
+    </form>
+</div>
 <h1>OUR MENU</h1>
+<br>
 <table>
-{% set page_count = 0 %}
     {% for category in categories %}
     <tr>
         <form action="/categories" id="form{{ category.menuCategoryCode }}" method="get">
             <th>
+                <img id="image{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="Picture of {{ category.menuCategoryTitle }}">
+            </th>
+            <td>
                 <span class="product" onclick="document.getElementById('form{{ category.menuCategoryCode }}').submit();">
                     {{ category.menuCategoryTitle }}
                 </span>
-            </th>
-            <td>
-                <img id="image{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="picture of {{ category.menuCategoryTitle }}" width="300" height="221">
             </td>
-            <input type="hidden" name="categoryNumber" value="{{ category.menuCategoryCode }}" />
-            <input type="hidden" name="categoryName" value="{{ category.menuCategoryTitle }}" />
+            <td>
+                {{ category.menuCategorySummary }}
+            </td>
+            <input type="hidden" name="categoryNumber" value="{{ category.menuCategoryCode }}">
+            <input type="hidden" name="categoryName" value="{{ category.menuCategoryTitle }}">
+            <input type="hidden" name="categorySummary" value="{{ category.menuCategorySummary }}">
         </form>
     </tr>
-{% endfor %}
+    {% endfor %}
 </table>
-<script src="/js/randomImage.js">
-</script>
+<script src="/js/randomImage.js"></script>
 <br>
 <br>
 {% endblock %}
