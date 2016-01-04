@@ -5,6 +5,7 @@
     },
     "autoload": {
         "psr-4" : {
+            "KBK\\JS\\": "public/js",
             "KBK\\Model\\": "src/model",
             "KBK\\Controller\\": "src/controller"
         }
