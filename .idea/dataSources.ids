@@ -10,6 +10,8 @@
     <table name="categories" schema="" catalog="kbk" type="TABLE">
       <column name="CategoryID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="CategoryName" sqlType="VARCHAR" precision="24" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CategoryImage" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CategorySummary" sqlType="VARCHAR" precision="256" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="CategoryID"/>
       <exported-key name="products_ibfk_1" table="products" schema="" catalog="kbk" columns="CategoryID"/>
     </table>
@@ -18,7 +20,7 @@
       <column name="CategoryID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="bGlua2VkIHRvIENhdGVnb3J5SUQgaW4gY2F0ZWdvcmllcyB0YWJsZQ=="/>
       <column name="ProductName" sqlType="VARCHAR" precision="222" scale="0" nullable="false" jdbcType="12"/>
       <column name="ProductImageURL" sqlType="VARCHAR" precision="222" scale="0" nullable="false" jdbcType="12"/>
-      <column name="ProductDescription" sqlType="VARCHAR" precision="280" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ProductDescription" sqlType="VARCHAR" precision="380" scale="0" nullable="false" jdbcType="12"/>
       <column name="ProductCalories" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="ProductAllergyInfo" sqlType="VARCHAR" precision="222" scale="0" nullable="false" jdbcType="12"/>
       <column name="ProductPrice" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
