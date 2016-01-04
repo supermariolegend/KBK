@@ -1,7 +1,7 @@
 // make a new request to get the data from the json file
 var request;
 request = new XMLHttpRequest();
-request.open('GET', '/db/getImgFromDb.php');
+request.open('GET', '/js/getImgFromDb.php');
 
 // declare a new variable to hold data about the menu categories
 // so we can get the urls for our images
@@ -31,7 +31,7 @@ function changeImage() {
          *
          * our range is from 1 to the amount of products in that category
          */
-        randomImageIndex = Math.floor((Math.random() * imageData[category][0]) + 1);
+        var randomImageIndex = Math.floor((Math.random() * imageData[category][0]) + 1);
         /**
          * get the image element from the html page by parsing
          * the integer i to a string and appending "image" to the beginning
