@@ -1,0 +1,50 @@
+{# *********** templates/adminSearch.html.twig ********** #}
+
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block adminSearchNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <div class="search_box">
+        <p>Search</p>
+        <form name="searchForm" method="get" action="/adminSearch">
+            <input type="text" name="keywords" value="{{ search }}" size="25" maxlength="30" placeholder="Search {% if searchType == "product" %}products{% else %}categories{% endif %}">
+            <input type="submit" name="search"/>
+            <p>By name:
+                <input type="submit" name="name" value="ascending">
+                <input type="submit" name="name" value="descending">
+            </p>
+            {% if searchType == "product" %}
+                <p>By calories:
+                    <input type="submit" name="calories" value="ascending">
+                    <input type="submit" name="calories" value="descending">
+                </p>
+                <p>By description:
+                    <input type="submit" name="description" value="ascending">
+                    <input type="submit" name="description" value="descending">
+                </p>
+                <p>By price:
+                    <input type="submit" name="price" value="ascending">
+                    <input type="submit" name="price" value="descending">
+                </p>
+            {% endif %}
+            {% if searchType != "product" %}
+                <p>By summary:
+                    <input type="submit" name="summary" value="ascending">
+                    <input type="submit" name="summary" value="descending">
+                </p>
+            {% endif %}
+            <input type="hidden" name="search_type" value="{{ searchType }}">
+        </form>
+    </div>
+    <div class="content">
+        {{ searchResults|raw }}
+    </div>
+{% endblock %}
