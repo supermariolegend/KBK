@@ -1,0 +1,106 @@
+{# *********** templates/editProduct.html.twig ********** #}
+
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block adminProductNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <h1>Edit product in {{ categoryName }}</h1>
+    <form id="editProduct" action="/adminEditProduct" method="get"></form>
+    <form id="uploadImage" action="/adminUploadImage" method="post" enctype="multipart/form-data"></form>
+    <div id="forms">
+        <table class="adminChange">
+            <tr>
+                <th>
+                    Product Name:
+                </th>
+                <td>
+                    <input type="text" name="product_name" form="editProduct" value="{{ productName }}" autofocus placeholder="Product Name"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Product image:
+                    <br>
+                    <em>(from an existing one)</em>
+                </th>
+                <td>
+                    {{ productImageSelection|raw }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Product image:
+                    <br>
+                    <em>(an image from the images folder)</em>
+                </th>
+                <td>
+                    <input type="text" name="productImageURL2" form="editProduct" value="{{ productImageURL }}" placeholder="Image name">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Product image:
+                    <br>
+                    <em>(upload an image to the images folder)</em>
+                </th>
+                <td>
+                    <input type="file" name="imageToUpload" form="uploadImage">
+                    <input type="hidden" name="changeItemURL" form="uploadImage" value="{{ changeItemURL }}">
+                    <input type="submit"  name="submit" form="uploadImage" value="Upload">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Product description:
+                </th>
+                <td>
+                    <textarea class="width_fill" name="product_description" form="editProduct" rows="5" placeholder="A description of this product">{{ productDescription }}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Product Calories
+                </th>
+                <td>
+                    <input type="number" name="product_calories" form="editProduct" value="{{ productCalories }}" placeholder="The amount of calories">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Product Allergy Information
+                </th>
+                <td>
+                    <textarea class="width_fill" name="product_allergy_info" form="editProduct" rows="2" placeholder="Any allergens that could possibly be in this product">{{ productAllergyInfo }}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Product Price(in Euro)
+                </th>
+                <td>
+                    <input type="number" name="product_price" form="editProduct" value="{{ productPrice }}" min="0.01" placeholder="Product Price" step="0.01">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit" form="editProduct" value="Submit">
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="product_ID" form="editProduct" value="{{ product_ID }}">
+        <input type="hidden" name="product_image_URL" form="editProduct" value="{{ productImageURL }}">
+        <input type="hidden" name="category_ID" form="editProduct" value="{{ categoryID }}">
+        <input type="hidden" name="category_name" form="editProduct" value="{{ categoryName }}">
+        <input type="hidden" name="category_summary" form="editProduct" value="{{ categorySummary }}">
+    </div>
+    {{ resultMessage }}
+{% endblock %}

@@ -1,0 +1,49 @@
+{# *********** templates/changeProductSelectCategory.html.twig ********** #}
+
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block adminProductNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <h1>Please select a category to change a product from</h1>
+    <div class="search_box">
+        <p>Search</p>
+        <form name="searchForm" method="get" action="/adminSearch">
+            <input type="text" name="keywords" size="25" maxlength="30" placeholder="Search categories">
+            <input type="submit" name="search">
+            <p>By name:
+                <input type="submit" name="name" value="ascending">
+                <input type="submit" name="name" value="descending">
+            </p>
+            <p>By summary:
+                <input type="submit" name="summary" value="ascending">
+                <input type="submit" name="summary" value="descending">
+            </p>
+            <input type="hidden" name="search_type" value="product-category">
+        </form>
+    </div>
+    <table>
+        {% for category in categories %}
+            <tr>
+                <th>
+                    <img id="image{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="Picture of {{ category.menuCategoryTitle }}" width="300" height="221">
+                </th>
+                <td>
+                    <form id="category{{ category.menuCategoryCode }}" action="/adminChangeProductSelectProduct" method="get">
+                        <span class="product" onclick="document.getElementById('category{{ category.menuCategoryCode }}').submit()">{{ category.menuCategoryTitle }}</span>
+                        <input type="hidden" name="categoryID" value="{{ category.menuCategoryCode }}">
+                        <input type="hidden" name="categoryName" value="{{ category.menuCategoryTitle }}">
+                        <input type="hidden" name="categorySummary" value="{{ category.menuCategorySummary }}">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
