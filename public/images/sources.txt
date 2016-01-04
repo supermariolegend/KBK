@@ -1,4 +1,8 @@
 website_logo_text.png - my own design
+favicon.ico - my own design
+bg.png - my own design
+admin_add.png - my own design
+missing_image.png - my own design
 vegetarian_burger.jpg - https://s2.graphiq.com/sites/default/files/530/media/images/t2/Burger_King_BK_Veggie_Burger_755054_i0.jpg
 dessert.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USDA_Pumpkin_Pie_4344874.jpg
 salad.jpg - https://s2.graphiq.com/sites/default/files/530/media/images/t2/McDonalds_Side_Salad_823450.png
@@ -16,3 +20,17 @@ donuts.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/USD
 veggie_delight_salad.jpg - https://s.graphiq.com/sites/default/files/5806/media/images/t2/Subway_Veggie_Delight_Salad_7022366.jpg
 jimmy_john_sandwich.jpg - https://s2.graphiq.com/sites/default/files/5806/media/images/t2/Jimmy_Johns_Vegetarian_Submarine_Sandwich_With_French_4352476.jpg
 cappuccino.jpg - http://www.kenwoodworld.com/Global/recipes/Recipe%20Images/desserts/Cappuccino_Cups_1.jpg
+organic.jpg - http://www.healthline.com/hlcmsresource/images/News/food-fads/060115_organic_BODY.jpg
+organic_farming_logo.jpg - http://ec.europa.eu/agriculture/organic/images/standard/organic_farming_logo.jpg
+chefs.jpg - http://img1-azcdn.newser.com/image/1030878-6-20150912230451-restaurant-chef-shortage-caused-by-too-many-restaurants-low-pay-entitled-millennials.jpeg
+mineral_water.jpg - http://circa1969resto.com/wp-content/uploads/2015/09/mineral-water.jpeg
+
+extra_toppings.png - http://i0.huffpost.com/gen/578943/images/s-VEGGIE-BURGER-RECIPES-large.jpg
+tzatziki.png - http://i.huffpost.com/gadgets/slideshows/222034/slide_222034_895698_free.jpg
+alfafa_sprouts.png - http://i.huffpost.com/gadgets/slideshows/222034/slide_222034_895942_free.jpg
+chips.png - http://i.huffpost.com/gadgets/slideshows/222034/slide_222034_896281_free.jpg
+cranberry_sauce.png - http://i.huffpost.com/gadgets/slideshows/222034/slide_222034_896477_free.jpg
+fried_green_tomatoes.png - http://i.huffpost.com/gadgets/slideshows/222034/slide_222034_895747_free.jpg
+kbk_house_burger.png - http://www.inspirationgreen.com/assets/images/Food%20blog%202010/veggie%20burgers/miikkahoo_flickr_creative_commons.jpg
+goat_cheese_salad.png - https://i.guim.co.uk/img/static/Guardian/lifeandstyle/gallery/2008/jun/06/foodanddrink/salad5-7095.jpg?w=300&q=85&auto=format&sharp=10&s=199096fb036c445a5463c1b8341c46d4
+chocolate_pudding.png - https://lh4.googleusercontent.com/-R5VsOa203DI/Tmea6PtAHqI/AAAAAAAAexQ/9ZeZlWtlUhY/s512/pudding-chocolate-tofu12--.jpg
