@@ -6,6 +6,10 @@ header {
     text-align: center;
 }
 
+.website_logo {
+    height: 7rem;
+}
+
 /* *********** login section ******* */
 header section {
     flex: 1;
@@ -27,6 +31,12 @@ p.error_login {
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: lavender;
+    background-image: url("../images/bg.png");
+    background-attachment: fixed;
+}
+
+.column_container section h3 {
+    font-family: "Comic Sans", "Comic Sans MS", cursive;
 }
 
 h1 {
@@ -38,6 +48,11 @@ h1 {
 
 nav ul {
     display: flex;
+    display: -ms-flexbox; /* IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -68,15 +83,22 @@ nav a.current_page {
 
 nav li {
     flex: 1;
+    -ms-flex: 1;
 }
 
+/* *********** Homepage image height ******* */
+.homepageImage {
+    height: 12rem;
+}
+
+/* *********** footer styling ******* */
 footer {
     position: fixed;
-    left: 0px;
-    bottom: 0px;
+    left: 0;
+    bottom: 0;
     height: 10px;
     width: 100%;
-    padding: 1rem;
+    padding: 0.4rem;
     text-align: center;
     background-color: lawngreen;
 }
@@ -101,28 +123,43 @@ th a:hover {
     padding: 1rem;
 }
 .column_container section {
+    flex: 1;
     padding: 1rem;
     border: 0.1rem solid lightseagreen;
 }
+
+.column_container section a {
+    color: salmon;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.column_container aside h3 {
+    color: lavender;
+}
+
+.column_container aside img {
+    width: 10rem;
+}
+
 aside	{
     width: 10rem;
     background-color: lightsalmon;
 }
-    /* ******** the main section will take the remaining available space **** */
 
-.column_container section {
-    flex: 1;
-    padding-bottom: 4rem;
+/* ********** Giving content a margin for search box ******** */
+.content {
+    margin-right: 17rem;
 }
 
 /* *************** search results page ***************** */
 
-span.search {
+.search {
     text-decoration: none;
     color: salmon;
 }
 
-span.search:hover {
+.search:hover {
     color: lawngreen;
     background-color: lightsalmon;
     cursor: pointer;
@@ -148,4 +185,30 @@ span.search:hover {
 .product:hover {
     color: salmon;
     cursor:pointer;
+}
+
+.search_results {
+    padding-top: 4rem;
+}
+
+/** styling to widen an element to 100%
+ * used in the textarea in addCategory.html.twig
+ **/
+.width_fill {
+    width: 100%;
+}
+
+/* ********** add/edit product/category form styling ******** */
+table.adminChange th {
+    text-align: right;
+}
+
+table.adminChange td {
+    width: 70%;
+}
+
+/* ********** table images(when displaying products and categories) ******** */
+table img{
+    width: 300px;
+    display: flex;
 }
