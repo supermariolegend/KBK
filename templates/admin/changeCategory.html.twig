@@ -1,0 +1,73 @@
+{# *********** templates/changeCategory.html.twig ********** #}
+
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block adminCategoryNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <h1>Please select a category to edit:</h1>
+    <div class="search_box">
+        <p>Search</p>
+        <form name="searchForm" method="get" action="/adminSearch">
+            <input type="text" name="keywords" size="25" maxlength="30" placeholder="Search categories">
+            <input type="submit" name="search"/>
+            <p>By name:
+                <input type="submit" name="name" value="ascending">
+                <input type="submit" name="name" value="descending">
+            </p>
+            <p>By summary:
+                <input type="submit" name="summary" value="ascending">
+                <input type="submit" name="summary" value="descending">
+            </p>
+            <input type="hidden" name="search_type" value="category">
+        </form>
+    </div>
+    <table>
+        {% for category in categories %}
+            <tr>
+                <th>
+                    <img id="image{{ category.menuCategoryCode }}" src="/images/{{ category.menuCategoryImage }}" alt="Picture of {{ category.menuCategoryTitle }}" width="300" height="221">
+                </th>
+                <td>
+                    {{ category.menuCategoryTitle }}
+                    <br>
+                    <br>
+                    <form id="editCategory{{ category.menuCategoryCode }}" action="/adminEditCategory" method="get">
+                        <span class="product" onclick="document.getElementById('editCategory{{ category.menuCategoryCode }}').submit()">Edit</span>
+                        <input type="hidden" name="categoryID" value="{{ category.menuCategoryCode }}">
+                        <input type="hidden" id="categoryName{{ category.menuCategoryCode }}" name="categoryName" value="{{ category.menuCategoryTitle }}">
+                        <input type="hidden" name="categoryImageURL" value="{{ category.menuCategoryImage }}">
+                        <input type="hidden" name="categoryImageURL1" value="">
+                        <input type="hidden" name="categoryImageURL2" value="">
+                        <input type="hidden" name="categorySummary" value="{{ category.menuCategorySummary }}">
+                    </form>
+                    <br>
+                    <form id="deleteCategory{{ category.menuCategoryCode }}" action="/adminDeleteCategory" method="get">
+                        <span class="product" onclick="deleteCategory({{ category.menuCategoryCode }})">Delete</span>
+                        <input type="hidden" name="categoryName" value="{{ category.menuCategoryTitle }}">
+                        <input type="hidden" name="categoryID" value="{{ category.menuCategoryCode }}">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <th>
+                <img src="/images/admin_add.png" alt="Add a new category" width="300" height="300">
+            </th>
+            <td>
+                <form id="addCategory" action="/adminAddCategory" method="get">
+                    <span class="product" onclick="document.getElementById('addCategory').submit()">Add a new Category</span>
+                </form>
+            </td>
+        </tr>
+    </table>
+    {{ productCategoriesData|raw }}
+    <script src="/js/changeCategory.js" ></script>
+{% endblock %}

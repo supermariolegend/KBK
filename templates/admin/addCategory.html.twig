@@ -1,0 +1,73 @@
+{# *********** templates/addCategory.html.twig ********** #}
+
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block adminCategoryNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <h1>Add a new category to the database</h1>
+    <form id="addCategory" action="/adminAddCategory" method="get"></form>
+    <form id="uploadImage" action="/adminUploadImage" method="post" enctype="multipart/form-data"></form>
+    <div id="forms">
+        <table class="adminChange">
+            <tr>
+                <th>
+                    Category name
+                </th>
+                <td>
+                    <input type="text" name="categoryName" form="addCategory" width="32" autofocus placeholder="Category Name"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Category image: <em>(from an existing one)</em>
+                </th>
+                <td>
+                    {{ categoryImageSelection|raw }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Category image: <em>(an image from the images folder)</em>
+                </th>
+                <td>
+                    <input type="text" name="categoryImageURL2" form="addCategory" width="32" placeholder="Image name"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Category image:
+                    <br>
+                    <em>(upload an image to the images folder)</em>
+                </th>
+                <td>
+                    <input type="file" name="imageToUpload" form="uploadImage">
+                    <input type="hidden" name="changeItemURL" form="uploadImage" value="{{ changeItemURL }}">
+                    <input type="submit"  name="submit" form="uploadImage" value="Upload">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Category summary:
+                </th>
+                <td>
+                    <textarea class="width_fill" name="categorySummary" form="addCategory" rows="5" placeholder="A description of items that will be in this category"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit" form="addCategory" value="Submit" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h2>{{ resultMessage }}</h2>
+{% endblock %}

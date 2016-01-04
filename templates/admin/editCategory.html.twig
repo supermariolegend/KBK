@@ -1,0 +1,75 @@
+{# *********** templates/editCategory.html.twig ********** #}
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block adminCategoryNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <h1>Edit a category in the database</h1>
+    <form id="editCategory" action="/adminEditCategory" method="get"></form>
+    <form id="uploadImage" action="/adminUploadImage" method="post" enctype="multipart/form-data"></form>
+    <div id="forms">
+        <table class="adminChange">
+            <tr>
+                <th>
+                    Category name
+                </th>
+                <td>
+                    <input type="text" name="categoryName" form="editCategory" value="{{ categoryName }}" width="32" autofocus placeholder="Category Name">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Category image: <em>(from an existing one)</em>
+                </th>
+                <td>
+                    {{ categoryImageSelection|raw }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Category image: <em>(an image from the images folder)</em>
+                </th>
+                <td>
+                    <input type="text" name="categoryImageURL2" form="editCategory" value="{{ categoryImageURL }}" width="32" placeholder="Image name">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Product image:
+                    <br>
+                    <em>(upload an image to the images folder)</em>
+                </th>
+                <td>
+                    <input type="file" name="imageToUpload" form="uploadImage">
+                    <input type="hidden" name="changeItemURL" form="uploadImage" value="{{ changeItemURL }}">
+                    <input type="submit"  name="submit" form="uploadImage" value="Upload">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Category summary:
+                </th>
+                <td>
+                    <textarea class="width_fill" name="categorySummary" form="editCategory" rows="5" placeholder="A description of items that will be in this category">{{ categorySummary }}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" name="submit" form="editCategory" value="Submit">
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="categoryID" form="editCategory" value="{{ categoryID }}">
+        <input type="hidden" name="categoryImageURL" form="editCategory" value="">
+    </div>
+    <br>
+    <p>{{ resultMessage }}</p>
+{% endblock %}
