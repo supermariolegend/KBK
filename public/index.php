@@ -26,6 +26,7 @@ $app->get('/',      controller('KBK\Controller', 'main/index'));
 $app->get('/about', controller('KBK\Controller', 'main/about'));
 $app->get('/menu', controller('KBK\Controller', 'main/menu'));
 $app->get('/contact', controller('KBK\Controller', 'main/contact'));
+$app->get('/contactSent', controller('KBK\Controller', 'main/contactSent'));
 $app->get('/error', controller('KBK\Controller', 'main/error'));
 $app->get('/search', controller('KBK\Controller', 'main/search'));
 $app->get('/categories', controller('KBK\Controller', 'main/categories'));
@@ -40,6 +41,18 @@ $app->post('/login',    controller('KBK\Controller', 'user/processLogin'));
 
 // ******** secure pages ********************
 $app->get('/admin',     controller('KBK\Controller', 'admin/index'));
-$app->get('/adminCodes', controller('KBK\Controller', 'admin/codes'));
+$app->get('/adminSearch', controller('KBK\Controller', 'admin/search'));
+$app->post('/adminUploadImage',     controller('KBK\Controller', 'admin/uploadImage'));
+
+$app->get('/adminChangeCategory', controller('KBK\Controller', 'admin/changeCategory'));
+$app->get('/adminAddCategory', controller('KBK\Controller', 'admin/addCategory'));
+$app->get('/adminEditCategory', controller('KBK\Controller', 'admin/editCategory'));
+$app->get('/adminDeleteCategory', controller('KBK\Controller', 'admin/deleteCategory'));
+
+$app->get('/adminChangeProductSelectCategory', controller('KBK\Controller', 'admin/changeProductSelectCategory'));
+$app->get('/adminChangeProductSelectProduct', controller('KBK\Controller', 'admin/changeProductSelectProduct'));
+$app->get('/adminEditProduct', controller('KBK\Controller', 'admin/editProduct'));
+$app->get('/adminAddProduct', controller('KBK\Controller', 'admin/addProduct'));
+$app->get('/adminDeleteProduct', controller('KBK\Controller', 'admin/deleteProduct'));
 //go - process request and decide what needed to be done
 $app->run();
