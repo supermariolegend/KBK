@@ -1,8 +1,12 @@
 <?php
 
-
+/**
+ * User controller for Silex
+ * This controller processes the user logging in and out of the website
+ *
+ * @package KBK\Controller
+ */
 namespace KBK\Controller;
-
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,8 +17,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class UserController
 {
-    //action for POST route:    /processLogin
     /**
+     * Function for handling the user logging in to the website.
+     * Action for POST route: /processLogin
+     *
      * @param Request $request
      * @param Application $app
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -43,8 +49,11 @@ class UserController
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
-    //action for route:     /login
     /**
+     * Function for handling session data for the user logging in.
+     *
+     * Action for route: /login
+     *
      * @param Request $request
      * @param Application $app
      */
@@ -61,8 +70,11 @@ class UserController
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
-    //action for route:     /logout
     /**
+     * Function for handling session data for the user logging out.
+     *
+     * Action for route: /logout
+     *
      * @param Request $request
      * @param Application $app
      */

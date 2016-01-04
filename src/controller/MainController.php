@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Controller responsible for handling all web pages in the public part of
+ * the website (where the user is not logged in)
+ */
+
 namespace KBK\Controller;
 
 use Silex\Application;
@@ -8,14 +14,21 @@ use KBK\Model\MenuCategoryRepository;
 use KBK\Model\ItemsInCategory;
 use KBK\Model\Search;
 
+/**
+ * Class MainController
+ * @package KBK\Controller
+ */
 class MainController
 {
     /**
+     * Action for the homepage of the website
+     *
+     * Action for route: /
+     *
      * @param Request $request
      * @param Application $app
      * @return mixed
      */
-    //action for route:     /
     public function indexAction(Request $request, Application $app)
     {
         //check if username is stored in session
@@ -33,11 +46,14 @@ class MainController
     }
 
     /**
+     * Action for the about page of the website
+     *
+     * Action for route: /about
+     *
      * @param Request $request
      * @param Application $app
      * @return mixed
      */
-    //action for route:     /about
     public function aboutAction(Request $request, Application $app)
     {
         //check if username is stored in session
@@ -46,8 +62,7 @@ class MainController
         // build arrgs array
         $argsArray = array(
             'username' => $username,
-            'title' => 'About us',
-            'content'=> 'About us - we`re a great food company'
+            'title' => 'About us'
         );
 
         //render template
@@ -56,11 +71,15 @@ class MainController
     }
 
     /**
+     * Action for the menu page of the website. This action makes a new
+     * MenuCategoryRepository and gets all the data from the database.
+     *
+     * Action for route: /menu
+     *
      * @param Request $request
      * @param Application $app
      * @return mixed
      */
-    //action for route:     /menu
     public function menuAction(Request $request, Application $app)
     {
         //check if username is stored in session
@@ -81,11 +100,14 @@ class MainController
     }
 
     /**
+     * Action for the contact page of the website.
+     *
+     * Action for route: /contact
+     *
      * @param Request $request
      * @param Application $app
      * @return mixed
      */
-    //action for route:     /contact
     public function contactAction(Request $request, Application $app)
     {
         //check if username is stored in session
@@ -93,9 +115,8 @@ class MainController
 
         // build arrgs array
         $argsArray = array(
-            'username' => $username,
-            'title' => 'Contact Details',
-            'content'=> 'These are our contact details: ...'
+            'title' => 'Contact Us',
+            'username' => $username
         );
 
         //render template
@@ -104,18 +125,56 @@ class MainController
     }
 
     /**
+     * Action for the contact sent page. The visitor is taken to this page
+     * after their contact details and message have been sent.
+     *
+     * Action for route: /contactSent
+     *
      * @param Request $request
      * @param Application $app
      * @return mixed
      */
-    // action for route:    /search keyword={search}
+    public function contactSentAction(Request $request, Application $app)
+    {
+        //check if username is stored in session
+        $username = getAuthenticatedUsername($app);
+
+        // build arrgs array
+        $argsArray = array(
+            'title' => 'Contact Us',
+            'username' => $username,
+            'name' => $_GET['name']
+        );
+
+        //render template
+        $templateName = 'contactSent';
+        return $app['twig']->render($templateName . '.html.twig', $argsArray);
+    }
+
+    /**
+     * Action for making a new product search from the menu page.
+     *
+     * Action for route: /search
+     *
+     * @param Request $request
+     * @param Application $app
+     * @return mixed
+     */
     public function searchAction(Request $request, Application $app)
     {
         //check if username is stored in session
         $username = getAuthenticatedUsername($app);
 
         $params = $request->query->all();
-        $search = $params['search'];
+        if(isset($params['search'])) {
+            $search = $params['search'];
+        } else {
+            $search = "";
+        }
+        $results = "";
+        $searchTitle = NULL;
+
+        $searchObject = new Search();
 
         $connection = open_database_connection();
         if(!$connection) {
@@ -124,17 +183,46 @@ class MainController
             header('Location: /error');
         }
 
-        $searchObject = new Search();
-        $results = $searchObject->makeSearch($connection, $search);
+        if(isset($_GET['search'])) {
+            if(isset($_GET['name'])) {
+                if ($_GET['name'] == "ascending") {
+                    $results = $searchObject->showAscendingBySearch($connection, $_GET['search'], "ProductName");
+                } else if ($_GET['name'] == "descending") {
+                    $results = $searchObject->showDescendingBySearch($connection, $_GET['search'], "ProductName");
+                }
+            } else if(isset($_GET['calories'])) {
+                if($_GET['calories'] == "ascending") {
+                    $results = $searchObject->showAscendingBySearch($connection, $_GET['search'], "ProductCalories");
+                } else if($_GET['calories'] == "descending") {
+                    $results = $searchObject->showDescendingBySearch($connection, $_GET['search'], "ProductCalories");
+                }
+            } else {
+                $results = $searchObject->makeSearch($connection, $_GET['search']);
+            }
+        } else if(isset($_GET['name'])) {
+            if($_GET['name'] == "ascending") {
+                $results = $searchObject->showAscending($connection, "ProductName");
+            } else {
+                $results = $searchObject->showDescending($connection, "ProductName");
+            }
+        } else if(isset($_GET['calories'])) {
+            if($_GET['calories'] == "ascending") {
+                $results = $searchObject->showAscending($connection, "ProductCalories");
+            } else {
+                $results = $searchObject->showDescending($connection, "ProductCalories");
+            }
+        }
+
 
         // build args array
         // ------------
 
         $argsArray = array(
             'username' => $username,
-            'results'=>$results,
-            'title'=>$search.' search results',
-            'searchQuery'=>$search
+            'results' => $results,
+            'title '=> $search.' search results',
+            'searchTitle' => $searchTitle,
+            'search' => $search
         );
         // render (draw) template
         // ------------
@@ -145,18 +233,27 @@ class MainController
     }
 
     /**
+     * Action for displaying an error message when the website doesn't function
+     * properly.
+     *
+     * Action for route: /error
+     *
      * @param Request $request
      * @param Application $
      */
-    // action for route: /error
     public function errorAction(Request $request, Application $app)
     {
         //check if username is stored in session
         $username = getAuthenticatedUsername($app);
 
-        $params = $request->query->all();
+        $errorMessage = "";
+        if(isset($_SESSION['errorCategory'] ) || isset($_SESSION['errorMessage'])) {
+            $errorMessage = 'Error type: ' . $_SESSION['errorCategory'] . '<br>' . 'Error details: ' . $_SESSION['errorMessage'];
+        } else {
+            $errorMessage = '<br>The website encountered an error.';
+        }
 
-        $errorMessage = 'Error type: '.$_SESSION['errorCategory'].'<br>'.'Error details: '.$_SESSION['errorMessage'];
+        $errorMessage .= "<br>If you see this page often, please contact an admininstrator.";
 
         // build args array
         // ------------
@@ -173,23 +270,31 @@ class MainController
     }
 
     /**
+     * Action for displaying all items from a category
+     *
+     * Action for route: /categories
+     *
      * @param Request $request
      * @param Application $
      * @param $app
      */
-    // action for route: /categories
     public function categoriesAction(Request $request, Application $app)
     {
         //check if username is stored in session
         $username = getAuthenticatedUsername($app);
 
-        $categoryNumber = $_GET['categoryNumber'];
-        $categoryName = $_GET['categoryName'];
+        if(isset($_GET['categoryNumber']) || isset($_GET['categoryName']) || isset($_GET['categorySummary'])) {
+            $categoryNumber = $_GET['categoryNumber'];
+            $categoryName = $_GET['categoryName'];
+            $categorySummary = $_GET['categorySummary'];
+        } else {
+            return $app->redirect("/error");
+        }
 
-        $db = open_database_connection();
+        $connection = open_database_connection();
 
         $categoryObject = new ItemsInCategory();
-        $categoryHTML = $categoryObject->getProductHTML($db, $categoryNumber);
+        $categoryHTML = $categoryObject->getProductHTML($connection, $categoryNumber, $categoryName, $categorySummary, "/product");
 
         // build args array
         $argsArray = array(
@@ -198,17 +303,22 @@ class MainController
             'html'=>$categoryHTML
         );
 
+        close_database_connection($connection);
+
         //render template
         $templateName = 'categories';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
     /**
+     * Action for displaying all the information about a product to the user
+     *
+     * Action for route: /product
+     *
      * @param Request $request
      * @param Application $app
      * @return mixed
      */
-    // action for route: /product
     public function productAction(Request $request, Application $app)
     {
         //check if username is stored in session
@@ -218,15 +328,15 @@ class MainController
         $productName = $_GET['product_name'];
         $error = "";
 
-        $db = open_database_connection();
-        if(!$db) {
+        $connection = open_database_connection();
+        if(!$connection) {
             $_SESSION['errorCategory'] = 'Database';
             $_SESSION['errorMessage'] = 'DB connection failed: '.mysqli_connect_error();
             header('Location: /error');
         }
 
         $query = "SELECT * FROM `products` WHERE ProductName = '".$productName."'";
-        $resultSet = mysqli_query($db, $query);
+        $resultSet = mysqli_query($connection, $query);
 
 
         if(mysqli_num_rows($resultSet) > 0) {
@@ -237,12 +347,12 @@ class MainController
             $productDescription = $rows['ProductDescription'];
             $productCalories = $rows['ProductCalories'];
             $productAllergyInfo = $rows['ProductAllergyInfo'];
-            $productPrice = $rows['ProductPrice'];
+            $productPrice = sprintf("%01.2f", $rows['ProductPrice']);
         } else {
             $error = "An internal server error occurred. Please try again later.";
         }
 
-        close_database_connection($db);
+        close_database_connection($connection);
 
         // build args array
         // -------------

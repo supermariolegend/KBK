@@ -1,12 +1,33 @@
 <?php
 
+/**
+ * Class for getting the html for each product in categories.html.twig
+ */
+
 namespace KBK\Model;
 
-
+/**
+ * Class ItemsInCategory
+ * @package KBK\Model
+ */
 class ItemsInCategory
 {
-    public function getProductHTML($db, $categoryID) {
+    /**
+     * Function used for getting html for each product in a specified
+     * category in categories.html.twig
+     *
+     * @param $db - mysqli database connection
+     * @param $categoryID - integer
+     * @param $categoryName - string
+     * @param $categorySummary - string
+     * @param $actionURL - string
+     * @return null|string
+     */
+    public function getProductHTML($db, $categoryID, $categoryName, $categorySummary, $actionURL) {
         $output = NULL;
+
+        $output .= "<h1>".$categoryName."</h1>";
+        $output .= "<p>".$categorySummary."</p>";
 
         $query = "SELECT * FROM `products` WHERE CategoryID = ".$categoryID;
         $results = mysqli_query($db, $query);
@@ -17,7 +38,7 @@ class ItemsInCategory
                 $product_image_url = $rows['ProductImageURL'];
 
                 $output .= '<tr>';
-                $output .= '    <form action="/product" id="product_result'.$rows['ProductID'].'" method="get">';
+                $output .= '    <form action="'.$actionURL.'" id="product_result'.$rows['ProductID'].'" method="get">';
                 $output .= '        <th>';
                 $output .= '            <img src="/images/'.$product_image_url.'" alt="'.$product_name.' width="300" height="221">';
                 $output .= '        </th>';
@@ -29,7 +50,7 @@ class ItemsInCategory
                 $output .= '    </form>';
                 $output .= '</tr>';
             }
-            return $output;
         }
+        return $output;
     }
 }

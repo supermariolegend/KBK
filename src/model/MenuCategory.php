@@ -45,6 +45,16 @@ class MenuCategory
     private $menuCategoryImage;
 
     /**
+     * summary of product category
+     * example:
+     * <code>
+     *     These vegetarian burgers are all natural...
+     * </code>
+     * @var string
+     */
+    private $menuCategorySummary;
+
+    /**
      * create new menu category product by providing the menu category code
      * example:
      * <code>
@@ -110,4 +120,21 @@ class MenuCategory
         return $this->menuCategoryImage;
     }
 
+    /**
+     * get the summary of the menu category
+     * @return string
+     */
+    public function getMenuCategorySummary()
+    {
+        return $this->menuCategorySummary;
+    }
+
+    /**
+     * set the summary of the menu category
+     * @param string $menuCategorySummary
+     */
+    public function setMenuCategorySummary($menuCategorySummary)
+    {
+        $this->menuCategorySummary = $menuCategorySummary;
+    }
 }
