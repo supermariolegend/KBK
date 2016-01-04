@@ -1,0 +1,25 @@
+{# *********** templates/deleteCategory.html.twig ********** #}
+
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block adminCategoryNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <h1>Delete category {{ categoryName }}</h1>
+    <p>Are you sure you want to <span class="delete">delete</span> the category {{ categoryName }}?</p>
+    <form action="/adminDeleteCategory" method="get">
+        <input type="submit" name="yes" value="Yes">
+        <input type="submit" name="no" value="No">
+        <input type="hidden" name="categoryID" value="{{ categoryID }}">
+        <input type="hidden" name="categoryName" value="{{ categoryName }}">
+    </form>
+    <br>
+    {{ resultMessage }}
+{% endblock %}
