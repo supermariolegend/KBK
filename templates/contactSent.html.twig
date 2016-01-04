@@ -1,0 +1,19 @@
+{# *********** templates/contactSent.html.twig ********** #}
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block contactNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+    <h1>Contact Us</h1>
+    <p>Thank you {{ name }} for letting us know how we can improve our products and services.</p>
+    <p>We will get in touch with you shortly.</p>
+    <br>
+    <p>KBK team</p>
+{% endblock %}
