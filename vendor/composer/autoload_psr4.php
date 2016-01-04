@@ -13,5 +13,6 @@ return array(
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Silex\\' => array($vendorDir . '/silex/silex/src/Silex'),
     'KBK\\Model\\' => array($baseDir . '/src/model'),
+    'KBK\\JS\\' => array($baseDir . '/public/js'),
     'KBK\\Controller\\' => array($baseDir . '/src/controller'),
 );
