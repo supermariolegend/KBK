@@ -1,0 +1,278 @@
+<?php
+/**
+ * Class responsible for making any changes to the products database
+ */
+
+namespace KBK\Model;
+
+/**
+ * Class ChangeProduct
+ * @package KBK\Model
+ */
+class ChangeProduct
+{
+    /**
+     * Function for getting all the images from the products in the
+     * database for the dropdown menu in either the addProduct form or the
+     * editProduct form.
+     *
+     * @param $db - mysqli database connection
+     * @param $form - string
+     * @return null|string
+     */
+    public function getProductsForSelection($db, $form) {
+        $output = NULL;
+
+        $query = "SELECT * FROM `products`";
+        $results = mysqli_query($db, $query);
+
+        $output .= '<select name="productImageURL1" form="'.$form.'">';
+        $output .= '<option value="0">Select an existing image</option>';
+
+        if (mysqli_num_rows($results) > 0) {
+            while ($rows = $results->fetch_assoc()) {
+                $output .= '<option value="'.$rows['ProductImageURL'].'">'.$rows['ProductImageURL'].'</option>';
+            }
+        }
+
+        $output .= "</select>";
+
+        return $output;
+    }
+
+    /**
+     * Function for getting the html for displaying each product
+     * in the changeProductSelectProduct page
+     *
+     * @param $db - mysqli database connection
+     * @param $categoryID - integer
+     * @param $categoryName - string
+     * @param $categorySummary - string
+     * @return null|string
+     */
+    public function getProductHTML($db, $categoryID, $categoryName, $categorySummary) {
+        $output = NULL;
+
+        $output .= "<h1>".$categoryName."</h1>";
+        $output .= "<p>".$categorySummary."</p>";
+
+        $query = "SELECT * FROM `products` WHERE CategoryID = ".$categoryID;
+        $results = mysqli_query($db, $query);
+
+        if(mysqli_num_rows($results) > 0) {
+            while($rows = $results->fetch_assoc()) {
+                $product_name = $rows['ProductName'];
+                $product_id = $rows['ProductID'];
+                $product_image_url = $rows['ProductImageURL'];
+                $product_description = $rows['ProductDescription'];
+                $product_calories = $rows['ProductCalories'];
+                $product_allergy_info = $rows['ProductAllergyInfo'];
+                $product_price = $rows['ProductPrice'];
+
+                $output .= '<tr>';
+                $output .= '    <th>';
+                $output .= '        <img src="/images/'.$product_image_url.'" alt="'.$product_name.'" width="300" height="221">';
+                $output .= '    </th>';
+
+                $output .= '    <td>';
+                $output .= '        <p>'.$product_name.'</p>';
+                $output .= '        <form action="/adminEditProduct" id="product_result'.$product_id.'" method="get">';
+                $output .= '            <p><span class="product" onclick="document.getElementById(\'product_result'.$product_id.'\').submit();">Edit</span></p>';
+                $output .= '            <input type="hidden" name="product_ID" value="'.$product_id.'" />
+                ';
+                $output .= '            <input type="hidden" id="productName'.$product_id.'" name="product_name" value="'.$product_name.'" />
+                ';
+                $output .= '            <input type="hidden" name="product_image_URL" value="'.$product_image_url.'" />
+                ';
+                $output .= '            <input type="hidden" name="product_description" value="'.$product_description.'" />
+                ';
+                $output .= '            <input type="hidden" name="product_calories" value="'.$product_calories.'" />
+                ';
+                $output .= '            <input type="hidden" name="product_allergy_info" value="'.$product_allergy_info.'" />
+                ';
+                $output .= '            <input type="hidden" name="product_price" value="'.$product_price.'" />
+                ';
+                $output .= '            <input type="hidden" name="category_ID" value="'.$categoryID.'" />
+                ';
+                $output .= '            <input type="hidden" name="category_name" value="'.$categoryName.'" />
+                ';
+                $output .= '            <input type="hidden" name="category_summary" value="'.$categorySummary.'" />
+                ';
+                $output .= '        </form>';
+                $output .= '        <form action="/adminDeleteProduct" id="deleteProduct'.$product_id.'" method="get">';
+                $output .= '            <p><span class="product" onclick="deleteProduct('.$product_id.');">Delete</span></p>';
+                $output .= '            <input type="hidden" name="product_ID" value="'.$product_id.'" />';
+                $output .= '            <input type="hidden" name="category_ID" value="'.$categoryID.'" />';
+                $output .= '            <input type="hidden" name="category_name" value="'.$categoryName.'" />';
+                $output .= '            <input type="hidden" name="category_summary" value="'.$categorySummary.'" />';
+                $output .= '        </form>';
+                $output .= '    </td>';
+                $output .= '</tr>';
+            }
+        }
+        return $output;
+    }
+
+    /**
+     * Function for choosing a correct image between the dropdown menu
+     * and the text field. This website prioritizes the text field
+     *
+     * @param $productImageURL1 - string
+     * @param $productImageURL2 - string
+     * @return string
+     */
+    public function getCorrectImage($productImageURL1, $productImageURL2) {
+        $productImageURL = "missing_image.png";
+        if (!empty($productImageURL1)) {
+            $productImageURL = $productImageURL1;
+        }
+        if (!empty($productImageURL2)) {
+            $productImageURL = $productImageURL2;
+        }
+        return $productImageURL;
+    }
+
+    /**
+     * Function that outputs a hidden input indicating that an error
+     * occurred when trying to delete a product. This is seen by the
+     * changeProduct.js script and makes an alert telling the user
+     * what went wrong.
+     *
+     * @param $errorMessage - string
+     * @return string
+     */
+    public function errorMessageToJSAlert($errorMessage) {
+        return '<input type="hidden" id="deleteProductErrorMessage" value="'.$errorMessage.'" />';
+    }
+
+    /**
+     * Function for adding a new product to the database
+     *
+     * @param $db - mysqli database connection
+     * @param $categoryID - integer
+     * @param $productName - string
+     * @param $productImageURL1 - string
+     * @param $productImageURL2 - string
+     * @param $productDescription - string
+     * @param $productCalories - integer
+     * @param $productAllergyInfo - string
+     * @param $productPrice - floating point number
+     * @return string
+     */
+    public function addProduct($db, $categoryID, $productName, $productImageURL1, $productImageURL2, $productDescription, $productCalories, $productAllergyInfo, $productPrice) {
+        if(isset($_GET['submit'])) {
+            // Handling images
+            $productImageURL = "missing_image.png";
+            if (!empty($productImageURL1)) {
+                $productImageURL = $productImageURL1;
+            }
+            if (!empty($productImageURL2)) {
+                $productImageURL = $productImageURL2;
+            }
+
+            // Handling ProductID
+            $query = "SELECT ProductID FROM `products` ORDER BY ProductID ASC";
+            $results = mysqli_query($db, $query);
+
+            $productID = 0;
+            $previousID = 0;
+            $foundInnerID = false;
+            if (mysqli_num_rows($results) > 0) {
+                while ($rows = $results->fetch_assoc()) {
+                    $productID = $rows['ProductID'];
+                    if($productID != ($previousID + 1)) {
+                        $foundInnerID = true;
+                        $productID = ($previousID + 1);
+                        break;
+                    }
+                    $previousID = $productID;
+                }
+            }
+            if($foundInnerID == false) {
+                $productID++;
+            }
+
+            // Handling ProductName
+            if(empty($productName)) {
+                $productName = "New Product";
+            }
+
+            // Handling ProductDescription
+            if(empty($productDescription)) {
+                $productDescription = "A description of this new product.";
+            }
+
+
+            // Handling ProductCalories
+            if(empty($productCalories)) {
+                $productCalories = 100;
+            }
+
+            // Handling ProductAllergyInfo
+            if(empty($productAllergyInfo)) {
+                $productAllergyInfo = "No allergens found.";
+            }
+
+            // Handling ProductPrice
+            if(empty($productPrice)) {
+                $productPrice = 4.99;
+            }
+
+            $query = "INSERT INTO `products` VALUES (".$productID.", ".$categoryID.", '".$productName."', '".$productImageURL."', '".$productDescription."', ".$productCalories.", '".$productAllergyInfo."', ".$productPrice.")";
+            mysqli_query($db, $query);
+
+            if (mysqli_errno($db)) {
+                return mysqli_error($db);
+            } else {
+                return "Success!";
+            }
+        }
+    }
+
+    /**
+     * Function for editing a product in the database
+     *
+     * @param $db - mysqli database connection
+     * @param $productID - integer
+     * @param $productName - string
+     * @param $productImageURL1 - string
+     * @param $productImageURL2 - string
+     * @param $productDescription - string
+     * @param $productCalories - integer
+     * @param $productAllergyInfo - string
+     * @param $productPrice - floating point number
+     * @return string
+     */
+    public function editProduct($db, $productID, $productName, $productImageURL1, $productImageURL2, $productDescription, $productCalories, $productAllergyInfo, $productPrice) {
+        if(isset($_GET['submit'])) {
+            $productImageURL = $this->getCorrectImage($productImageURL1, $productImageURL2);
+
+            $query = "UPDATE `products` SET `ProductName` = '".$productName."', `ProductImageURL` = '".$productImageURL."', `ProductDescription` = '".$productDescription."', `ProductCalories` = ".$productCalories.", `ProductAllergyInfo` = '".$productAllergyInfo."', `ProductPrice` = ".$productPrice." WHERE ProductID = ".$productID;
+
+            mysqli_query($db, $query);
+            if (mysqli_errno($db)) {
+                return mysqli_error($db);
+            } else {
+                return "Success!";
+            }
+        }
+    }
+
+    /**
+     * Function for deleting a product in the database
+     *
+     * @param $db - mysqli database connection
+     * @param $productID - integer
+     * @return string
+     */
+    public function deleteProduct($db, $productID) {
+        $query = "DELETE FROM `products` WHERE `ProductID` = ".$productID;
+
+        mysqli_query($db, $query);
+        if (mysqli_errno($db)) {
+            return mysqli_error($db);
+        } else {
+            return "Success!";
+        }
+    }
+}
